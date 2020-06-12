@@ -1,20 +1,23 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+    <VButton @clicked="receiveClick" :primary="true">Click me</VButton>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import HelloWorld from "./components/HelloWorld.vue";
+import VButton from "./components/UI/VButton.vue";
 
 @Component({
   components: {
-    HelloWorld
-  }
+    VButton,
+  },
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+  public receiveClick(): void {
+    console.log("click received in Parent");
+  }
+}
 </script>
 
 <style>
