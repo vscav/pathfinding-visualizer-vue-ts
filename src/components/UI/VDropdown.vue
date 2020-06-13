@@ -41,7 +41,6 @@ export default class VDropdown extends Vue {
   private showDropdown = false;
 
   mounted() {
-    console.log(this.options, this.showDropdown);
     this.currentPlaceholder = this.options[0];
     this.selected = this.options[0];
   }

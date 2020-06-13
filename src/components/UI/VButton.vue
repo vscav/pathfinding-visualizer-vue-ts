@@ -25,7 +25,7 @@ export default class VButton extends Vue {
 
   @Emit("clicked")
   public clicked(): void {
-    console.log("clicked in VButton component");
+    console.log("click in button component");
   }
 }
 </script>

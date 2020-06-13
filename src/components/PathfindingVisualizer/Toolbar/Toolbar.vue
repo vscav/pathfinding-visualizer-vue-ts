@@ -42,27 +42,32 @@ export default class Toolbar extends Vue {
 
   @Emit("clear-path")
   clearPath() {
-    this.$emit("clear-path");
+    console.log("clearPath called (Toolbar component)");
+    //this.$emit("clear-path");
   }
 
   @Emit("clear-board")
   clearBoard() {
-    this.$emit("clear-board");
+    console.log("clearBoard called (Toolbar component)");
+    //this.$emit("clear-board");
   }
 
   @Emit("visualize")
   visualize() {
-    this.$emit("visualize");
+    console.log("Visualize called (Toolbar component)");
+    //this.$emit("visualize");
   }
 
   @Emit("update-algorithm")
   updateAlgorithm(name: string) {
-    this.$emit("update-algorithm", name);
+    console.log("updateAlgorithm called (Toolbar component)");
+    //this.$emit("update-algorithm", name);
   }
 
   @Emit("update-speed")
   updateSpeed(type: string) {
-    this.$emit("update-speed", type);
+    console.log("updateSpeed called (Toolbar component)");
+    //this.$emit("update-speed", type);
   }
 }
 </script>

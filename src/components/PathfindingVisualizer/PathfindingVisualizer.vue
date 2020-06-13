@@ -1,18 +1,16 @@
 <template>
   <div>
-    <!-- <Toolbar
+    <!-- <div class="description">
+      <p>{{ description }}</p>
+    </div>
+    <p v-if="performance">Execution time : {{ performance }} ms</p> -->
+    <Toolbar
       @update-algorithm="updateAlgorithm"
       @update-speed="updateSpeed"
       @clear-path="clearPath"
       @clear-board="clearBoard"
       @visualize="visualize"
     />
-    <Legend />
-    <div class="description">
-      <p>{{ description }}</p>
-    </div>
-    <p v-if="performance">Execution time : {{ performance }} ms</p> -->
-    <Toolbar />
     <Legend />
     <table class="board">
       <tbody>
@@ -187,6 +185,46 @@ export default class PathfindingVisualizer extends Vue {
     };
     newGrid[row][col] = newNode;
     return newGrid;
+  }
+
+  public clearPath(): void {
+    console.log("clearPath called (Container)");
+  }
+
+  public clearBoard(): void {
+    console.log("clearBoard called (Container)");
+  }
+
+  public visualize(): void {
+    console.log("visualize called (Container)");
+  }
+
+  public updateAlgorithm(name: string): void {
+    console.log("updateAlgorithm called (Container)");
+    this.currentAlgorithm = this.getAlgorithm(name);
+  }
+
+  public updateSpeed(type: string): void {
+    console.log("updateSpeed called (Container)");
+    this.currentSpeed = this.getSpeed(type);
+  }
+
+  public getAlgorithm(name: string): string {
+    const Algorithms: { [char: string]: string } = {
+      Dijkstra: "Dijkstra",
+      "A*": "Astar",
+    };
+    return Algorithms[name];
+  }
+
+  public getSpeed(type: string): number {
+    const Speeds: { [char: string]: number } = {
+      Fast: 10,
+      Average: 50,
+      Slow: 100,
+      default: 10,
+    };
+    return Speeds[type] || Speeds.default;
   }
 
   public handleMouseDown(row: number, col: number): void {
