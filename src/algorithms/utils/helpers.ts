@@ -7,55 +7,21 @@ export const getNodesInShortestPathOrder = (
 ): Array<NodeObject> => {
   const nodesInShortestPathOrder = [];
   let currentNode = node;
-  while (currentNode !== null) {
+  //while (currentNode !== null) {
+  while (currentNode!) {
     nodesInShortestPathOrder.unshift(currentNode);
     currentNode = currentNode.previousNode;
   }
   return nodesInShortestPathOrder;
 };
 
-// Dijkstra algorithm helpers
-
-export const getAllNodes = (
-  grid: Array<Array<NodeObject>>
-): Array<NodeObject> => {
-  const nodes = [];
-  for (const row of grid) for (const node of row) nodes.push(node);
-  return nodes;
-};
-
-export const sortNodesByDistance = (
-  unvisitedNodes: Array<NodeObject>
-): void => {
-  unvisitedNodes.sort((nodeA, nodeB) => nodeA.distance - nodeB.distance);
-};
-
-export const updateUnvisitedNeighbors = (
-  node: NodeObject,
-  grid: Array<Array<NodeObject>>
-): void => {
-  const unvisitedNeighbors = getUnvisitedNeighbors(node, grid);
-  for (const neighbor of unvisitedNeighbors) {
-    neighbor.distance = node.distance + 1;
-    neighbor.previousNode = node;
-  }
-};
-
-const getUnvisitedNeighbors = (
-  node: NodeObject,
-  grid: Array<Array<NodeObject>>
-): Array<NodeObject> => {
-  const neighbors = getNeighbors(node, grid);
-  return neighbors.filter((neighbor) => !neighbor.isVisited);
-};
-
 // A* algorithm helpers
 
 export const getLowest = (list: Array<NodeObject>): number => {
-  let lowest_index = 0;
+  let lowestIndex = 0;
   for (let i = 0; i < list.length; i++)
-    if (list[i].f < list[lowest_index].f) lowest_index = i;
-  return lowest_index;
+    if (list[i].f < list[lowestIndex].f) lowestIndex = i;
+  return lowestIndex;
 };
 
 export const getNeighbors = (
@@ -75,4 +41,39 @@ export const manhattanDistance = (a: NodeObject, b: NodeObject): number => {
   const d1 = Math.abs(b.row - a.row);
   const d2 = Math.abs(b.col - a.col);
   return d1 + d2;
+};
+
+// Dijkstra algorithm helpers
+
+export const getAllNodes = (
+  grid: Array<Array<NodeObject>>
+): Array<NodeObject> => {
+  const nodes = [];
+  for (const row of grid) for (const node of row) nodes.push(node);
+  return nodes;
+};
+
+export const sortNodesByDistance = (
+  unvisitedNodes: Array<NodeObject>
+): void => {
+  unvisitedNodes.sort((nodeA, nodeB) => nodeA.distance - nodeB.distance);
+};
+
+const getUnvisitedNeighbors = (
+  node: NodeObject,
+  grid: Array<Array<NodeObject>>
+): Array<NodeObject> => {
+  const neighbors = getNeighbors(node, grid);
+  return neighbors.filter((neighbor) => !neighbor.isVisited);
+};
+
+export const updateUnvisitedNeighbors = (
+  node: NodeObject,
+  grid: Array<Array<NodeObject>>
+): void => {
+  const unvisitedNeighbors = getUnvisitedNeighbors(node, grid);
+  for (const neighbor of unvisitedNeighbors) {
+    neighbor.distance = node.distance + 1;
+    neighbor.previousNode = node;
+  }
 };

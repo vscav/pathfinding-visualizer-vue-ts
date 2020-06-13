@@ -1,9 +1,5 @@
 <template>
   <div>
-    <!-- <div class="description">
-      <p>{{ description }}</p>
-    </div>
-    <p v-if="performance">Execution time : {{ performance }} ms</p> -->
     <Toolbar
       @update-algorithm="updateAlgorithm"
       @update-speed="updateSpeed"
@@ -197,8 +193,13 @@ export default class PathfindingVisualizer extends Vue {
     const grid = this.grid;
     const startNode = grid[this.startNodeRow][this.startNodeCol];
     const finishNode = grid[this.finishNodeRow][this.finishNodeCol];
-    const response = dijkstra();
-    console.log(response);
+    const { visitedNodesInOrder, nodesInShortestPathOrder } = dijkstra(
+      grid,
+      startNode,
+      finishNode
+    );
+    //console.log(visitedNodesInOrder, nodesInShortestPathOrder);
+    this.animateVisitedNodes(visitedNodesInOrder);
   }
 
   public visualizeAstar(): void {
@@ -207,6 +208,23 @@ export default class PathfindingVisualizer extends Vue {
     const finishNode = grid[this.finishNodeRow][this.finishNodeCol];
     const response = astar();
     console.log(response);
+  }
+
+  public animateVisitedNodes(
+    visitedNodesInOrder: Array<undefined | NodeObject>
+  ): void {
+    let element;
+    visitedNodesInOrder.forEach((visitedNode, index) => {
+      setTimeout(() => {
+        const node = visitedNode;
+        element = document.getElementById(`node-${node!.row}-${node!.col}`);
+        if (
+          !element!.classList.contains("node-start") &&
+          !element!.classList.contains("node-finish")
+        )
+          element!.className = "node node-visited";
+      }, this.currentSpeed * index);
+    });
   }
 
   public updateAlgorithm(name: string): void {
