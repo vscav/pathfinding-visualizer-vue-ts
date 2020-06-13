@@ -123,27 +123,111 @@ export default class PathfindingVisualizer extends Vue {
     return newGrid;
   }
 
+  public getNewGridWithStartNodeUpdated(
+    grid: Array<Array<NodeObject>>,
+    row: number,
+    col: number
+  ) {
+    const newGrid = grid.slice();
+    const node = newGrid[row][col];
+    const newNode = {
+      ...node,
+      isStart: true,
+    };
+    newGrid[row][col] = newNode;
+    return newGrid;
+  }
+
+  getNewGridWithStartNodeCleaned(
+    grid: Array<Array<NodeObject>>,
+    row: number,
+    col: number
+  ) {
+    const newGrid = grid.slice();
+    const node = newGrid[row][col];
+    const newNode = {
+      ...node,
+      isStart: false,
+    };
+    newGrid[row][col] = newNode;
+    return newGrid;
+  }
+
+  getNewGridWithFinishNodeUpdated(
+    grid: Array<Array<NodeObject>>,
+    row: number,
+    col: number
+  ) {
+    const newGrid = grid.slice();
+    const node = newGrid[row][col];
+    const newNode = {
+      ...node,
+      isFinish: true,
+    };
+    newGrid[row][col] = newNode;
+    return newGrid;
+  }
+
+  getNewGridWithFinishNodeCleaned(
+    grid: Array<Array<NodeObject>>,
+    row: number,
+    col: number
+  ) {
+    const newGrid = grid.slice();
+    const node = newGrid[row][col];
+    const newNode = {
+      ...node,
+      isFinish: false,
+    };
+    newGrid[row][col] = newNode;
+    return newGrid;
+  }
+
   public handleMouseDown(row: number, col: number): void {
-    const newGrid = this.getNewGridWithWallToggled(this.grid, row, col);
-    this.grid = newGrid;
+    if (row == this.startNodeRow && col == this.startNodeCol) {
+      this.startNodeCache = [row, col];
+    } else if (row == this.finishNodeRow && col == this.finishNodeCol) {
+      this.finishNodeCache = [row, col];
+    } else {
+      const newGrid = this.getNewGridWithWallToggled(this.grid, row, col);
+      this.grid = newGrid;
+    }
     this.mouseIsPressed = true;
-    //console.log("PathfindingVisualizer component : handled mouse down event.");
   }
 
   public handleMouseEnter(row: number, col: number): void {
     if (!this.mouseIsPressed) return;
-    const newGrid = this.getNewGridWithWallToggled(this.grid, row, col);
-    this.grid = newGrid;
-    //console.log("PathfindingVisualizer component : handled mouse enter event.");
+    if (this.startNodeCache) {
+      this.startNodeRow = row;
+      this.startNodeCol = col;
+      const newGrid = this.getNewGridWithStartNodeUpdated(this.grid, row, col);
+      this.grid = newGrid;
+    } else if (this.finishNodeCache) {
+      this.finishNodeRow = row;
+      this.finishNodeCol = col;
+      const newGrid = this.getNewGridWithFinishNodeUpdated(this.grid, row, col);
+      this.grid = newGrid;
+    } else {
+      const newGrid = this.getNewGridWithWallToggled(this.grid, row, col);
+      this.grid = newGrid;
+    }
   }
 
   public handleMouseLeave(row: number, col: number): void {
-    console.log("PathfindingVisualizer component : handled mouse leave event.");
+    if (!this.mouseIsPressed) return;
+    if (this.startNodeCache) {
+      const newGrid = this.getNewGridWithStartNodeCleaned(this.grid, row, col);
+      this.grid = newGrid;
+    } else if (this.finishNodeCache) {
+      const newGrid = this.getNewGridWithFinishNodeCleaned(this.grid, row, col);
+      this.grid = newGrid;
+    }
   }
 
   public handleMouseUp(): void {
     this.mouseIsPressed = false;
-    //console.log("PathfindingVisualizer component : handled mouse up event.");
+    this.startNodeCache = [];
+    this.finishNodeCache = [];
   }
 }
 </script>

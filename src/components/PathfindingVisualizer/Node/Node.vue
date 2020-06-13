@@ -76,21 +76,17 @@ export default class Node extends Vue {
 }
 
 .node-finish {
-  background-color: red;
-  outline: none;
-  /* background-image: url(../../../assets/target.svg);
+  background-image: url(../../../assets/target.svg);
   background-position: center;
   background-repeat: no-repeat;
-  background-size: contain; */
+  background-size: contain;
 }
 
 .node-start {
-  background-color: green;
-  outline: none;
-  /* background-image: url(../../../assets/chevron.svg);
+  background-image: url(../../../assets/chevron.svg);
   background-position: center;
   background-repeat: no-repeat;
-  background-size: contain; */
+  background-size: contain;
 }
 
 .node-visited {
