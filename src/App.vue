@@ -1,23 +1,21 @@
 <template>
   <div id="app">
-    <VButton @clicked="receiveClick" :primary="true">Click me</VButton>
+    <PathfindingVisualizer />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import PathfindingVisualizer from "./components/PathfindingVisualizer/PathfindingVisualizer.vue";
 import VButton from "./components/UI/VButton.vue";
 
 @Component({
   components: {
+    PathfindingVisualizer,
     VButton,
   },
 })
-export default class App extends Vue {
-  public receiveClick(): void {
-    console.log("click received in Parent");
-  }
-}
+export default class App extends Vue {}
 </script>
 
 <style>
