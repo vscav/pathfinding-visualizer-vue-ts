@@ -69,27 +69,27 @@ export default class Node extends Vue {
 </script>
 
 <style>
-.node {
+.board .node {
   width: 25px;
   height: 25px;
   outline: 1px solid rgba(41, 73, 255, 0.1);
 }
 
-.node-finish {
+.board .node-finish {
   background-image: url(../../../assets/target.svg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
 }
 
-.node-start {
+.board .node-start {
   background-image: url(../../../assets/chevron.svg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
 }
 
-.node-visited {
+.board .node-visited {
   animation-name: visitedAnimation;
   animation-duration: 1.5s;
   animation-timing-function: ease-out;
@@ -101,20 +101,12 @@ export default class Node extends Vue {
   outline: none;
 }
 
-.node-wall {
+.board .node-wall {
   background-color: rgb(12, 53, 71);
-  /* animation-name: wallAnimation;
-  animation-duration: 0.3s;
-  animation-timing-function: ease-out;
-  animation-delay: 0;
-  animation-direction: alternate;
-  animation-iteration-count: 1;
-  animation-fill-mode: forwards;
-  animation-play-state: running; */
   outline: none;
 }
 
-.node-shortest-path {
+.board .node-shortest-path {
   animation-name: shortestPath;
   animation-duration: 1.5s;
   animation-timing-function: ease-out;

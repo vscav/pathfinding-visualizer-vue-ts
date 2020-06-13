@@ -42,6 +42,9 @@ import Legend from "@/components/PathfindingVisualizer/Legend/Legend.vue";
 import Node from "@/components/PathfindingVisualizer/Node/Node.vue";
 import Toolbar from "@/components/PathfindingVisualizer/Toolbar/Toolbar.vue";
 
+import { dijkstra } from "../../algorithms/dijkstra";
+import { astar } from "../../algorithms/astar";
+
 @Component({
   components: {
     Legend,
@@ -185,6 +188,25 @@ export default class PathfindingVisualizer extends Vue {
 
   public visualize(): void {
     console.log("visualize called (Container)");
+    this.currentAlgorithm == "Dijkstra"
+      ? this.visualizeDijkstra()
+      : this.visualizeAstar();
+  }
+
+  public visualizeDijkstra(): void {
+    const grid = this.grid;
+    const startNode = grid[this.startNodeRow][this.startNodeCol];
+    const finishNode = grid[this.finishNodeRow][this.finishNodeCol];
+    const response = dijkstra();
+    console.log(response);
+  }
+
+  public visualizeAstar(): void {
+    const grid = this.grid;
+    const startNode = grid[this.startNodeRow][this.startNodeCol];
+    const finishNode = grid[this.finishNodeRow][this.finishNodeCol];
+    const response = astar();
+    console.log(response);
   }
 
   public updateAlgorithm(name: string): void {
