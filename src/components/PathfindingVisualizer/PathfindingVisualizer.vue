@@ -12,6 +12,8 @@
       <p>{{ description }}</p>
     </div>
     <p v-if="performance">Execution time : {{ performance }} ms</p> -->
+    <Toolbar />
+    <Legend />
     <table class="board">
       <tbody>
         <tr v-for="(row, rowIndex) in grid" v-bind:key="rowIndex">
@@ -36,7 +38,9 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import Legend from "@/components/PathfindingVisualizer/Legend/Legend.vue";
 import Node from "@/components/PathfindingVisualizer/Node/Node.vue";
+import Toolbar from "@/components/PathfindingVisualizer/Toolbar/Toolbar.vue";
 
 type NodeObject = {
   col: number;
@@ -54,7 +58,9 @@ type NodeObject = {
 
 @Component({
   components: {
+    Legend,
     Node,
+    Toolbar,
   },
 })
 export default class PathfindingVisualizer extends Vue {
@@ -138,7 +144,7 @@ export default class PathfindingVisualizer extends Vue {
     return newGrid;
   }
 
-  getNewGridWithStartNodeCleaned(
+  public getNewGridWithStartNodeCleaned(
     grid: Array<Array<NodeObject>>,
     row: number,
     col: number
@@ -153,7 +159,7 @@ export default class PathfindingVisualizer extends Vue {
     return newGrid;
   }
 
-  getNewGridWithFinishNodeUpdated(
+  public getNewGridWithFinishNodeUpdated(
     grid: Array<Array<NodeObject>>,
     row: number,
     col: number
@@ -168,7 +174,7 @@ export default class PathfindingVisualizer extends Vue {
     return newGrid;
   }
 
-  getNewGridWithFinishNodeCleaned(
+  public getNewGridWithFinishNodeCleaned(
     grid: Array<Array<NodeObject>>,
     row: number,
     col: number
