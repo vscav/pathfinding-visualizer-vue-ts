@@ -198,7 +198,6 @@ export default class PathfindingVisualizer extends Vue {
       startNode,
       finishNode
     );
-    //console.log(visitedNodesInOrder, nodesInShortestPathOrder);
     this.animateVisitedNodes(visitedNodesInOrder);
   }
 

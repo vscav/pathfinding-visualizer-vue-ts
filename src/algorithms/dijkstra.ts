@@ -40,7 +40,3 @@ export const dijkstra = (
     nodesInShortestPathOrder: getNodesInShortestPathOrder(finishNode),
   };
 };
-
-// export const dijkstra = () => {
-//   return "test function in dijkstra.ts";
-// };

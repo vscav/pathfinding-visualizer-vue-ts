@@ -7,7 +7,6 @@ export const getNodesInShortestPathOrder = (
 ): Array<NodeObject> => {
   const nodesInShortestPathOrder = [];
   let currentNode = node;
-  //while (currentNode !== null) {
   while (currentNode!) {
     nodesInShortestPathOrder.unshift(currentNode);
     currentNode = currentNode.previousNode;
