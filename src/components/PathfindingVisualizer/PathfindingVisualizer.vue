@@ -38,24 +38,49 @@
 import { Component, Vue } from "vue-property-decorator";
 import Node from "@/components/PathfindingVisualizer/Node/Node.vue";
 
+type NodeObject = {
+  col: number;
+  row: number;
+  isStart: boolean;
+  isFinish: boolean;
+  distance: number;
+  isVisited: boolean;
+  isWall: boolean;
+  previousNode: NodeObject;
+  f: number;
+  g: number;
+  h: number;
+};
+
 @Component({
   components: {
     Node,
   },
 })
 export default class PathfindingVisualizer extends Vue {
-  private grid: Array<object> = [];
+  private grid: Array<Array<NodeObject>> = [];
   private startNodeRow = 9;
   private startNodeCol = 10;
+  private startNodeCache: Array<number> = [];
   private finishNodeRow = 9;
   private finishNodeCol = 30;
+  private finishNodeCache: Array<number> = [];
+  private mouseIsPressed = false;
+  private currentSpeed = 10;
+  private performance = -1;
+  private currentAlgorithm = "Dijkstra";
+  private descriptions: { Dijkstra: string; Astar: string } = {
+    Dijkstra:
+      "Dijkstra's Algorithm is weighted and guarantees the shortest path",
+    Astar: "A* Search is weighted and guarantees the shortest path",
+  };
 
   mounted() {
     const grid = this.getInitialGrid();
     this.grid = grid;
   }
 
-  public getInitialGrid(): Array<object> {
+  public getInitialGrid(): Array<Array<NodeObject>> {
     const grid = [];
     for (let row = 0; row < 20; row++) {
       const currentRow = [];
@@ -67,7 +92,7 @@ export default class PathfindingVisualizer extends Vue {
     return grid;
   }
 
-  public createNode(col: number, row: number): object {
+  public createNode(col: number, row: number): NodeObject {
     return {
       col,
       row,
@@ -76,19 +101,40 @@ export default class PathfindingVisualizer extends Vue {
       distance: Infinity,
       isVisited: false,
       isWall: false,
-      previousNode: null,
+      previousNode: {} as NodeObject,
       f: 0,
       g: 0,
       h: 0,
     };
   }
 
+  public getNewGridWithWallToggled(
+    grid: Array<Array<NodeObject>>,
+    row: number,
+    col: number
+  ) {
+    const newGrid = grid.slice();
+    const node = newGrid[row][col];
+    const newNode = {
+      ...node,
+      isWall: !node.isWall,
+    };
+    newGrid[row][col] = newNode;
+    return newGrid;
+  }
+
   public handleMouseDown(row: number, col: number): void {
-    console.log("PathfindingVisualizer component : handled mouse down event.");
+    const newGrid = this.getNewGridWithWallToggled(this.grid, row, col);
+    this.grid = newGrid;
+    this.mouseIsPressed = true;
+    //console.log("PathfindingVisualizer component : handled mouse down event.");
   }
 
   public handleMouseEnter(row: number, col: number): void {
-    console.log("PathfindingVisualizer component : handled mouse enter event.");
+    if (!this.mouseIsPressed) return;
+    const newGrid = this.getNewGridWithWallToggled(this.grid, row, col);
+    this.grid = newGrid;
+    //console.log("PathfindingVisualizer component : handled mouse enter event.");
   }
 
   public handleMouseLeave(row: number, col: number): void {
@@ -96,7 +142,8 @@ export default class PathfindingVisualizer extends Vue {
   }
 
   public handleMouseUp(): void {
-    console.log("PathfindingVisualizer component : handled mouse up event.");
+    this.mouseIsPressed = false;
+    //console.log("PathfindingVisualizer component : handled mouse up event.");
   }
 }
 </script>

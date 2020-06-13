@@ -51,22 +51,18 @@ export default class Node extends Vue {
 
   @Emit("mouseup")
   public onMouseUp(): void {
-    console.log("Node component : onMouseUp event");
     this.$emit("mouse-up");
   }
   @Emit("mousedown")
   public onMouseDown(): void {
-    console.log("Node component : onMouseDown event");
     this.$emit("mouse-down", this.row, this.col);
   }
   @Emit("mouseenter")
   public onMouseEnter(): void {
-    console.log("Node component : onMouseEnter event");
     this.$emit("mouse-enter", this.row, this.col);
   }
   @Emit("mouseleave")
   public onMouseLeave(): void {
-    console.log("Node component : onMouseLeave event");
     this.$emit("mouse-leave", this.row, this.col);
   }
 }
