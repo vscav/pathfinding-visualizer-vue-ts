@@ -36,23 +36,11 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import { NodeObject } from "@/types/NodeObject";
+
 import Legend from "@/components/PathfindingVisualizer/Legend/Legend.vue";
 import Node from "@/components/PathfindingVisualizer/Node/Node.vue";
 import Toolbar from "@/components/PathfindingVisualizer/Toolbar/Toolbar.vue";
-
-type NodeObject = {
-  col: number;
-  row: number;
-  isStart: boolean;
-  isFinish: boolean;
-  distance: number;
-  isVisited: boolean;
-  isWall: boolean;
-  previousNode: NodeObject;
-  f: number;
-  g: number;
-  h: number;
-};
 
 @Component({
   components: {
