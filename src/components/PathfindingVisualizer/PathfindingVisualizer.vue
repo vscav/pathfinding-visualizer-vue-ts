@@ -197,12 +197,12 @@ export default class PathfindingVisualizer extends Vue {
 
   public handleMouseEnter(row: number, col: number): void {
     if (!this.mouseIsPressed) return;
-    if (this.startNodeCache) {
+    if (this.startNodeCache.length != 0) {
       this.startNodeRow = row;
       this.startNodeCol = col;
       const newGrid = this.getNewGridWithStartNodeUpdated(this.grid, row, col);
       this.grid = newGrid;
-    } else if (this.finishNodeCache) {
+    } else if (this.finishNodeCache.length != 0) {
       this.finishNodeRow = row;
       this.finishNodeCol = col;
       const newGrid = this.getNewGridWithFinishNodeUpdated(this.grid, row, col);
@@ -215,10 +215,10 @@ export default class PathfindingVisualizer extends Vue {
 
   public handleMouseLeave(row: number, col: number): void {
     if (!this.mouseIsPressed) return;
-    if (this.startNodeCache) {
+    if (this.startNodeCache.length != 0) {
       const newGrid = this.getNewGridWithStartNodeCleaned(this.grid, row, col);
       this.grid = newGrid;
-    } else if (this.finishNodeCache) {
+    } else if (this.finishNodeCache.length != 0) {
       const newGrid = this.getNewGridWithFinishNodeCleaned(this.grid, row, col);
       this.grid = newGrid;
     }
