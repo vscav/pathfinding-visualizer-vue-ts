@@ -44,7 +44,7 @@ import Node from "@/components/PathfindingVisualizer/Node/Node.vue";
   },
 })
 export default class PathfindingVisualizer extends Vue {
-  private grid: Array<any> = [];
+  private grid: Array<object> = [];
   private startNodeRow = 9;
   private startNodeCol = 10;
   private finishNodeRow = 9;
@@ -55,7 +55,7 @@ export default class PathfindingVisualizer extends Vue {
     this.grid = grid;
   }
 
-  public getInitialGrid(): Array<any> {
+  public getInitialGrid(): Array<object> {
     const grid = [];
     for (let row = 0; row < 20; row++) {
       const currentRow = [];
@@ -67,7 +67,7 @@ export default class PathfindingVisualizer extends Vue {
     return grid;
   }
 
-  public createNode(col: number, row: number): any {
+  public createNode(col: number, row: number): object {
     return {
       col,
       row,

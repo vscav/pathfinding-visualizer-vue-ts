@@ -7,12 +7,10 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import PathfindingVisualizer from "./components/PathfindingVisualizer/PathfindingVisualizer.vue";
-import VButton from "./components/UI/VButton.vue";
 
 @Component({
   components: {
     PathfindingVisualizer,
-    VButton,
   },
 })
 export default class App extends Vue {}
