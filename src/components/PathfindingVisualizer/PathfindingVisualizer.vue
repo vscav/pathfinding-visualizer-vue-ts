@@ -112,7 +112,7 @@ export default class PathfindingVisualizer extends Vue {
     grid: Array<Array<NodeObject>>,
     row: number,
     col: number
-  ) {
+  ): Array<Array<NodeObject>> {
     const newGrid = grid.slice();
     const node = newGrid[row][col];
     const newNode = {
@@ -127,7 +127,7 @@ export default class PathfindingVisualizer extends Vue {
     grid: Array<Array<NodeObject>>,
     row: number,
     col: number
-  ) {
+  ): Array<Array<NodeObject>> {
     const newGrid = grid.slice();
     const node = newGrid[row][col];
     const newNode = {
@@ -142,7 +142,7 @@ export default class PathfindingVisualizer extends Vue {
     grid: Array<Array<NodeObject>>,
     row: number,
     col: number
-  ) {
+  ): Array<Array<NodeObject>> {
     const newGrid = grid.slice();
     const node = newGrid[row][col];
     const newNode = {
@@ -157,7 +157,7 @@ export default class PathfindingVisualizer extends Vue {
     grid: Array<Array<NodeObject>>,
     row: number,
     col: number
-  ) {
+  ): Array<Array<NodeObject>> {
     const newGrid = grid.slice();
     const node = newGrid[row][col];
     const newNode = {
@@ -172,7 +172,7 @@ export default class PathfindingVisualizer extends Vue {
     grid: Array<Array<NodeObject>>,
     row: number,
     col: number
-  ) {
+  ): Array<Array<NodeObject>> {
     const newGrid = grid.slice();
     const node = newGrid[row][col];
     const newNode = {
