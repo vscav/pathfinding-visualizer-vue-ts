@@ -198,7 +198,7 @@ export default class PathfindingVisualizer extends Vue {
       startNode,
       finishNode
     );
-    this.animateVisitedNodes(visitedNodesInOrder);
+    this.animateVisitedNodes(visitedNodesInOrder, nodesInShortestPathOrder);
   }
 
   public visualizeAstar(): void {
@@ -210,10 +210,17 @@ export default class PathfindingVisualizer extends Vue {
   }
 
   public animateVisitedNodes(
-    visitedNodesInOrder: Array<undefined | NodeObject>
+    visitedNodesInOrder: Array<undefined | NodeObject>,
+    nodesInShortestPathOrder: Array<undefined | NodeObject>
   ): void {
     let element;
     visitedNodesInOrder.forEach((visitedNode, index) => {
+      if (index === visitedNodesInOrder.length - 1) {
+        setTimeout(() => {
+          this.animateShortestPath(nodesInShortestPathOrder);
+        }, this.currentSpeed * index);
+        return;
+      }
       setTimeout(() => {
         const node = visitedNode;
         element = document.getElementById(`node-${node!.row}-${node!.col}`);
@@ -223,6 +230,28 @@ export default class PathfindingVisualizer extends Vue {
         )
           element!.className = "node node-visited";
       }, this.currentSpeed * index);
+    });
+  }
+
+  public animateShortestPath(
+    nodesInShortestPathOrder: Array<undefined | NodeObject>
+  ): void {
+    let element;
+    nodesInShortestPathOrder.forEach((nodeInShortestPath, index) => {
+      setTimeout(() => {
+        element = document.getElementById(
+          `node-${nodeInShortestPath!.row}-${nodeInShortestPath!.col}`
+        );
+        if (
+          !element!.classList.contains("node-start") &&
+          !element!.classList.contains("node-finish")
+        )
+          element!.className = "node node-shortest-path";
+        else if (element!.classList.contains("node-start"))
+          element!.className = "node node-shortest-path node-start";
+        else if (element!.classList.contains("node-finish"))
+          element!.className = "node node-shortest-path node-finish";
+      }, 50 * index);
     });
   }
 
