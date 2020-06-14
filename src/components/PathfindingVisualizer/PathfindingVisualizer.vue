@@ -205,8 +205,12 @@ export default class PathfindingVisualizer extends Vue {
     const grid = this.grid;
     const startNode = grid[this.startNodeRow][this.startNodeCol];
     const finishNode = grid[this.finishNodeRow][this.finishNodeCol];
-    const response = astar();
-    console.log(response);
+    const { visitedNodesInOrder, nodesInShortestPathOrder } = astar(
+      grid,
+      startNode,
+      finishNode
+    );
+    this.animateVisitedNodes(visitedNodesInOrder, nodesInShortestPathOrder);
   }
 
   public animateVisitedNodes(

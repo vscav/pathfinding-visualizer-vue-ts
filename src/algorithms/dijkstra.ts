@@ -12,7 +12,7 @@ export const dijkstra = (
   startNode: NodeObject,
   finishNode: NodeObject
 ) => {
-  const visitedNodesInOrder = [];
+  const visitedNodesInOrder: Array<NodeObject | undefined> = [];
   startNode.distance = 0;
   const unvisitedNodes = getAllNodes(grid);
   while (unvisitedNodes.length != 0) {
