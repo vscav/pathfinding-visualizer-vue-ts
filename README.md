@@ -1,7 +1,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/N0Ls/Wodabest-REST">
-    <img src="src/assets/logo.png" alt="Logo" width="80">
+    <img src="src/assets/application-logo.png" alt="Logo" width="80">
   </a>
 
   <h3 align="center">Pathfinding visualizer</h3>
