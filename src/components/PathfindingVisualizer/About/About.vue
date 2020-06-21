@@ -1,9 +1,17 @@
 <template>
-  <div class="title-wrapper">
-    <div class="title">
-      Pathfinding<br /><span class="title-span">Visualizer</span>
+  <div class="introduction">
+    <div class="title-wrapper">
+      <div class="title-text">
+        Pathfinding<br /><span class="title-span">Visualizer</span>
+      </div>
+      <div class="title-line"></div>
     </div>
-    <div class="title-line"></div>
+    <div class="description-wrapper">
+      <div class="description-text">
+        This application offers you an intuitive interface and options<br />
+        to quickly visualize some pathfinding algorithms.
+      </div>
+    </div>
   </div>
 </template>
 
@@ -15,12 +23,16 @@ export default class About extends Vue {}
 </script>
 
 <style>
-.title-wrapper {
-  width: 70vw;
+.introduction {
+  display: flex;
+  width: 60vw;
   margin: auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
   margin-bottom: 35px;
 }
-.title {
+.title-text {
   color: #222534;
   font-size: 40px;
   line-height: 50px;
@@ -35,5 +47,11 @@ export default class About extends Vue {}
   height: 2px;
   margin-top: 20px;
   background-color: rgba(41, 73, 255, 0.75);
+}
+.description-wrapper {
+  padding: 25px;
+}
+.description-text {
+  line-height: 30px;
 }
 </style>
