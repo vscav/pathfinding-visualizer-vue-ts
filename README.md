@@ -46,10 +46,10 @@ Coming soon ...
 
 - Typescript application
 - Toolbar
-  - Select a pathfinding algorithm
-  - Select a visualization speed
-  - Clear the board (path and walls)
-  - Clear the path
+  - [x] Select a pathfinding algorithm
+  - [x] Select a visualization speed
+  - [ ] Clear the board (path and walls)
+  - [ ] Clear the path
 - Legend
   - Start node
   - Target node
