@@ -177,8 +177,34 @@ export default class PathfindingVisualizer extends Vue {
     return newGrid;
   }
 
+  public getNewGridCopy(
+    grid: Array<Array<NodeObject>>
+  ): Array<Array<NodeObject>> {
+    const newGrid = grid.slice();
+    return newGrid;
+  }
+
   public clearPath(): void {
     console.log("clearPath called (Container)");
+    // let element;
+    // this.grid.forEach((row) => {
+    //   row.forEach((node) => {
+    //     node.isVisited = false;
+    //     element = document.getElementById(`node-${node.row}-${node.col}`);
+    //     if (
+    //       element!.classList.contains("node-shortest-path") ||
+    //       element!.classList.contains("node-visited")
+    //     ) {
+    //       if (element!.classList.contains("node-start"))
+    //         element!.className = "node node-start";
+    //       else if (element!.classList.contains("node-finish"))
+    //         element!.className = "node node-finish";
+    //       else element!.className = "node";
+    //     }
+    //   });
+    // });
+    // const newGrid = this.getNewGridCopy(this.grid);
+    // this.grid = newGrid;
   }
 
   public clearBoard(): void {
