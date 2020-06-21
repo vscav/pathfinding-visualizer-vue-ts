@@ -2,8 +2,15 @@
   <header>
     <img class="logo" src="../../assets/application-logo.png" alt="logo" />
     <VButton :rounded="true"
-      ><img class="github-logo" src="../../assets/github-icon.svg" alt="github"
-    /></VButton>
+      ><a
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://github.com/vscav/pathfinding-visualizer-vue-ts"
+        ><img
+          class="github-logo"
+          src="../../assets/github-icon.svg"
+          alt="github"/></a
+    ></VButton>
   </header>
 </template>
 
