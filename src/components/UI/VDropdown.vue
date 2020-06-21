@@ -69,7 +69,7 @@ export default class VDropdown extends Vue {
   box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.06);
   border: none;
   color: rgba(41, 73, 255, 0.75);
-  font: 14px/36px "Roboto", sans-serif !important;
+  font-size: 14px;
   transition: all 200ms linear;
 }
 .vue-select .selected-option {
@@ -80,6 +80,7 @@ export default class VDropdown extends Vue {
   position: relative;
   box-sizing: border-box;
   transition: all 200ms linear;
+  padding: 10px;
 }
 .vue-select .selected-option:hover {
   color: rgba(41, 73, 255, 0.4);
@@ -106,6 +107,7 @@ export default class VDropdown extends Vue {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  padding: 10px;
 }
 .dropdown-options--cell:hover {
   background-color: rgba(41, 73, 255, 0.04);

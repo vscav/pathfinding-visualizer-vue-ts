@@ -1,5 +1,6 @@
 <template>
   <div>
+    <About />
     <Toolbar
       @update-algorithm="updateAlgorithm"
       @update-speed="updateSpeed"
@@ -34,6 +35,7 @@
 import { Component, Vue } from "vue-property-decorator";
 import { NodeObject } from "@/types/NodeObject";
 
+import About from "@/components/PathfindingVisualizer/About/About.vue";
 import Legend from "@/components/PathfindingVisualizer/Legend/Legend.vue";
 import Node from "@/components/PathfindingVisualizer/Node/Node.vue";
 import Toolbar from "@/components/PathfindingVisualizer/Toolbar/Toolbar.vue";
@@ -43,6 +45,7 @@ import { astar } from "../../algorithms/astar";
 
 @Component({
   components: {
+    About,
     Legend,
     Node,
     Toolbar,

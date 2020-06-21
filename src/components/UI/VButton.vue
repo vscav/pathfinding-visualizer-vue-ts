@@ -5,6 +5,7 @@
       'btn-primary': primary,
       'btn-secondary': secondary,
       'btn-flat': flat,
+      'btn-rounded': rounded,
     }"
     class="btn"
   >
@@ -22,6 +23,8 @@ export default class VButton extends Vue {
   readonly secondary!: boolean;
   @Prop({ required: false, type: Boolean, default: false })
   readonly flat!: boolean;
+  @Prop({ required: false, type: Boolean, default: false })
+  readonly rounded!: boolean;
 
   @Emit("clicked")
   public clicked(): void {
@@ -34,9 +37,9 @@ export default class VButton extends Vue {
 .btn {
   height: 36px;
   display: inline-block;
-  font: 14px/36px "Roboto", sans-serif !important;
+  font-size: 14px;
   padding: 0 16px;
-  min-width: 120px;
+  width: 120px;
   text-align: center;
   position: relative;
   cursor: pointer;
@@ -82,6 +85,26 @@ export default class VButton extends Vue {
 .btn.btn-flat:hover {
   transition: 0.4s;
   background: rgba(41, 73, 255, 0.04);
+  border: 1px solid #fff;
+}
+
+.btn.btn-rounded {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  transition: 0.4s;
+  background: #fff;
+  color: rgba(41, 73, 255, 0.75);
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.06);
+  border: 1px solid #fff;
+  border-radius: 50%;
+  margin: 10px;
+  padding: 0;
+}
+.btn.btn-rounded:hover {
+  transition: 0.4s;
+  background: #fff;
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.26);
   border: 1px solid #fff;
 }
 </style>

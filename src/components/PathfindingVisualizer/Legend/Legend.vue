@@ -30,8 +30,9 @@
 </template>
 
 <script lang="ts">
-import { Vue } from "vue-property-decorator";
+import { Vue, Component } from "vue-property-decorator";
 
+@Component
 export default class Legend extends Vue {}
 </script>
 
@@ -47,6 +48,7 @@ export default class Legend extends Vue {}
   display: inline-block;
   list-style: none;
   padding: 0 28px 0 0;
+  font-size: 14px;
 }
 .legend ul > li > div {
   width: 25px;

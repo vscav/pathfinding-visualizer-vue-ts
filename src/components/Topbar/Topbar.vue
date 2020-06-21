@@ -1,7 +1,9 @@
 <template>
   <header>
-    <img class="logo" src="../../assets/logo.png" alt="logo" />
-    <VButton :secondary="true">Lien</VButton>
+    <img class="logo" src="../../assets/application-logo.png" alt="logo" />
+    <VButton :rounded="true"
+      ><img class="github-logo" src="../../assets/github-icon.svg" alt="github"
+    /></VButton>
   </header>
 </template>
 
@@ -25,12 +27,19 @@ header {
   justify-content: flex-end;
   align-items: center;
   padding: 15px 10%;
-  margin-bottom: 25px;
+  margin-bottom: 40px;
 }
 
 .logo {
-  cursor: pointer;
-  width: 30px;
+  width: 40px;
   margin-right: auto;
+}
+
+.github-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
 }
 </style>
