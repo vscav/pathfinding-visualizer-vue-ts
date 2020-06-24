@@ -365,12 +365,9 @@ export default class PathfindingVisualizer extends Vue {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 .board {
   margin: auto;
   border-spacing: 0px;
-}
-.description {
-  margin-bottom: 25px;
 }
 </style>

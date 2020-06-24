@@ -27,7 +27,7 @@ import VButton from "../UI/VButton.vue";
 export default class Topbar extends Vue {}
 </script>
 
-<style>
+<style lang="scss" scoped>
 header {
   background-color: transparent;
   display: flex;
@@ -35,18 +35,18 @@ header {
   align-items: center;
   padding: 15px 10%;
   margin-bottom: 40px;
-}
 
-.logo {
-  width: 40px;
-  margin-right: auto;
-}
+  .logo {
+    width: 40px;
+    margin-right: auto;
+  }
 
-.github-logo {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 20px;
+  .github-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+  }
 }
 </style>

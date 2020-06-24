@@ -72,7 +72,7 @@ export default class Toolbar extends Vue {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 .toolbar {
   margin-bottom: 25px;
 }

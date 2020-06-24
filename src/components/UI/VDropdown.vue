@@ -9,7 +9,11 @@
       </svg>
     </span>
     <transition name="slide">
-      <div class="dropdown-options-container" v-show="showDropdown">
+      <div
+        class="dropdown-options-container"
+        v-show="showDropdown"
+        :style="{ height: 38 * numberOfOptions + 'px' }"
+      >
         <div
           class="dropdown-options"
           v-for="option in options"
@@ -45,6 +49,10 @@ export default class VDropdown extends Vue {
     this.selected = this.options[0];
   }
 
+  get numberOfOptions(): number {
+    return this.options.length;
+  }
+
   public toggleDropdown(): void {
     this.showDropdown = !this.showDropdown;
   }
@@ -58,7 +66,7 @@ export default class VDropdown extends Vue {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 .vue-select {
   position: relative;
   width: 180px;
@@ -72,64 +80,77 @@ export default class VDropdown extends Vue {
   color: rgba(41, 73, 255, 0.75);
   font-size: 14px;
   transition: all 200ms linear;
-}
-.vue-select .selected-option {
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  display: inline-block;
-  width: 100%;
-  position: relative;
-  box-sizing: border-box;
-  transition: all 200ms linear;
-  padding: 10px;
-}
-.vue-select .selected-option:hover {
-  color: rgba(41, 73, 255, 0.4);
-}
-.vue-select .selected-option:hover svg {
-  fill: rgba(41, 73, 255, 0.4);
-}
-.vue-select .selected-option svg {
-  fill: rgba(41, 73, 255, 0.75);
-  position: absolute;
-  right: 8px;
-  top: 50%;
-  transform: translateY(-50%);
-  transition: fill 300ms linear;
-}
-.vue-select .selected-option svg:hover {
-  fill: rgba(41, 73, 255, 0.4);
-}
-.dropdown-options-container {
-  overflow-y: scroll;
-  height: auto;
-  position: absolute;
-  width: 100%;
-  z-index: 1;
-  background: inherit;
-  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.06);
-}
-.dropdown-options--cell {
-  user-select: none;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  padding: 10px;
-}
-.dropdown-options--cell:hover {
-  background-color: rgba(41, 73, 255, 0.04);
-  border: none;
-}
-.dropdown-options.selected .dropdown-options--cell {
-  background-color: rgba(41, 73, 255, 0.04);
-  border: none;
-}
-.slide-enter-active,
-.slide-leave-active {
-  transition: height 150ms ease;
-}
-.slide-enter,
-.slide-leave-to {
-  height: 0px;
+
+  .selected-option {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: inline-block;
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+    transition: all 200ms linear;
+    padding: 10px;
+
+    &:hover {
+      color: rgba(41, 73, 255, 0.4);
+    }
+
+    &:hover svg {
+      fill: rgba(41, 73, 255, 0.4);
+    }
+  }
+
+  svg {
+    fill: rgba(41, 73, 255, 0.75);
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: fill 300ms linear;
+
+    &:hover {
+      fill: rgba(41, 73, 255, 0.4);
+    }
+  }
+
+  .dropdown-options-container {
+    overflow-y: scroll;
+    position: absolute;
+    width: 100%;
+    height: 150px;
+    z-index: 1;
+    background: inherit;
+    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.06);
+
+    .dropdown-options--cell {
+      user-select: none;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding: 10px;
+
+      &:hover {
+        background-color: rgba(41, 73, 255, 0.04);
+        border: none;
+      }
+    }
+
+    .dropdown-options {
+      &.selected .dropdown-options--cell {
+        background-color: rgba(41, 73, 255, 0.04);
+        border: none;
+      }
+    }
+  }
+
+  .slide-enter-active,
+  .slide-leave-active {
+    transition: height 150ms ease;
+  }
+
+  .slide-enter,
+  .slide-leave-to {
+    height: 0px;
+  }
 }
 </style>

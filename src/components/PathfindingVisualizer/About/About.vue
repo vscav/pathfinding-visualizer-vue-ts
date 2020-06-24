@@ -22,7 +22,7 @@ import { Vue, Component } from "vue-property-decorator";
 export default class About extends Vue {}
 </script>
 
-<style>
+<style lang="scss" scoped>
 .introduction {
   display: flex;
   width: 60vw;
@@ -31,27 +31,34 @@ export default class About extends Vue {}
   flex-wrap: wrap;
   justify-content: space-around;
   margin-bottom: 35px;
-}
-.title-text {
-  color: #222534;
-  font-size: 40px;
-  line-height: 50px;
-  font-weight: 700;
-  text-align: left;
-}
-.title-span {
-  font-weight: 300;
-}
-.title-line {
-  width: 90px;
-  height: 2px;
-  margin-top: 20px;
-  background-color: rgba(41, 73, 255, 0.75);
-}
-.description-wrapper {
-  padding: 25px;
-}
-.description-text {
-  line-height: 30px;
+
+  .title-wrapper {
+    .title-text {
+      color: #222534;
+      font-size: 40px;
+      line-height: 50px;
+      font-weight: 700;
+      text-align: left;
+
+      .title-span {
+        font-weight: 300;
+      }
+    }
+
+    .title-line {
+      width: 90px;
+      height: 2px;
+      margin-top: 20px;
+      background-color: rgba(41, 73, 255, 0.75);
+    }
+  }
+
+  .description-wrapper {
+    padding: 25px;
+
+    .description-text {
+      line-height: 30px;
+    }
+  }
 }
 </style>
