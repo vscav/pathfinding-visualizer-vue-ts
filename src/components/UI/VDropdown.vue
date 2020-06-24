@@ -58,7 +58,7 @@ export default class VDropdown extends Vue {
 }
 </script>
 
-<style lang="scss">
+<style>
 .vue-select {
   position: relative;
   width: 180px;
