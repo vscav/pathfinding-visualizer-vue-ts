@@ -58,8 +58,9 @@ export default class VDropdown extends Vue {
 }
 </script>
 
-<style>
+<style lang="scss">
 .vue-select {
+  position: relative;
   width: 180px;
   background-color: #fff;
   display: inline-block;
@@ -101,6 +102,12 @@ export default class VDropdown extends Vue {
 }
 .dropdown-options-container {
   overflow-y: scroll;
+  height: auto;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+  background: inherit;
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.06);
 }
 .dropdown-options--cell {
   user-select: none;
