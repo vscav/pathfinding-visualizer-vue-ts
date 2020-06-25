@@ -29,7 +29,7 @@ export default class Topbar extends Vue {}
 
 <style lang="scss" scoped>
 header {
-  background-color: white;
+  background-color: #fff;
   display: flex;
   justify-content: flex-end;
   align-items: center;

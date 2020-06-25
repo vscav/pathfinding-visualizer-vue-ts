@@ -19,8 +19,9 @@ import Topbar from "@/components/Topbar.vue";
 export default class App extends Vue {}
 </script>
 
-<style>
+<style lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet');
+
 * {
   box-sizing: border-box;
   margin: 0;

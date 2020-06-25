@@ -38,7 +38,14 @@ export default class Legend extends Vue {}
 
 <style lang="scss" scoped>
 .legend {
+  max-width: 1000px;
+  margin: auto;
   margin-bottom: 25px;
+  padding: 10px 0 10px 0;
+  background: #fff;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.06);
 
   ul {
     margin-bottom: 15px;
@@ -162,17 +169,9 @@ export default class Legend extends Vue {}
         background-color: rgba(8, 14, 51, 0.75);
       }
 
-      25% {
-        background-color: rgba(12, 21, 74, 0.75);
-      }
-
       50% {
-        background-color: rgba(17, 30, 108, 0.75);
-      }
-
-      75% {
         transform: scale(1.2);
-        background-color: rgba(25, 45, 161, 0.75);
+        background-color: rgba(17, 30, 108, 0.75);
       }
 
       100% {
@@ -183,7 +182,7 @@ export default class Legend extends Vue {}
 
     @keyframes shortestPath {
       0% {
-        transform: scale(0.6);
+        transform: scale(0.3);
         background-color: rgb(255, 242, 28);
       }
 
@@ -213,6 +212,13 @@ export default class Legend extends Vue {}
         background-color: rgb(12, 53, 71);
       }
     }
+  }
+}
+
+@media (max-width: 1080px) {
+  .legend {
+    margin: 0 20px 25px 20px;
+    padding: 15px;
   }
 }
 </style>

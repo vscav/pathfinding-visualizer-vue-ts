@@ -130,7 +130,7 @@ export default class VDropdown extends Vue {
     height: 150px;
     z-index: 1;
     background: inherit;
-    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.06);
+    box-shadow: 0 9px 10px 0 rgba(0, 0, 0, 0.06);
     border-radius: 4px;
     margin-top: 2px;
 

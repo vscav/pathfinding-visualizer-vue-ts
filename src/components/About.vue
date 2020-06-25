@@ -47,8 +47,9 @@ export default class About extends Vue {}
 
     .title-line {
       width: 90px;
-      height: 2px;
+      height: 3px;
       margin-top: 20px;
+      border-radius: 4px;
       background-color: rgba(41, 73, 255, 0.75);
     }
   }
@@ -59,6 +60,12 @@ export default class About extends Vue {}
     .description-text {
       line-height: 30px;
     }
+  }
+}
+
+@media (max-width: 768px) {
+  .introduction {
+    width: 75vw;
   }
 }
 </style>

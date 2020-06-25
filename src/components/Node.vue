@@ -69,112 +69,110 @@ export default class Node extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.board {
-  .node {
-    width: 25px;
-    height: 25px;
-    outline: 1px solid rgba(41, 73, 255, 0.1);
+.node {
+  width: 25px;
+  height: 25px;
+  outline: 1px solid rgba(41, 73, 255, 0.1);
 
-    &.node-finish {
-      background-image: url(../assets/target.svg);
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: contain;
+  &.node-finish {
+    background-image: url(../assets/target.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  &.node-start {
+    background-image: url(../assets/chevron.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  &.node-visited {
+    animation-name: visitedAnimation;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-out;
+    animation-delay: 0;
+    animation-direction: alternate;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-play-state: running;
+    outline: none;
+  }
+
+  &.node-wall {
+    background-color: rgb(12, 53, 71);
+    outline: none;
+  }
+
+  &.node-shortest-path {
+    animation-name: shortestPath;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-out;
+    animation-delay: 0;
+    animation-direction: alternate;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-play-state: running;
+    outline: none;
+  }
+
+  @keyframes visitedAnimation {
+    0% {
+      transform: scale(0.3);
+      background-color: rgba(8, 14, 51, 0.75);
+      border-radius: 100%;
     }
 
-    &.node-start {
-      background-image: url(../assets/chevron.svg);
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: contain;
+    25% {
+      background-color: rgba(12, 21, 74, 0.75);
     }
 
-    &.node-visited {
-      animation-name: visitedAnimation;
-      animation-duration: 1.5s;
-      animation-timing-function: ease-out;
-      animation-delay: 0;
-      animation-direction: alternate;
-      animation-iteration-count: 1;
-      animation-fill-mode: forwards;
-      animation-play-state: running;
-      outline: none;
+    50% {
+      background-color: rgba(17, 30, 108, 0.75);
     }
 
-    &.node-wall {
+    75% {
+      transform: scale(1.2);
+      background-color: rgba(25, 45, 161, 0.75);
+    }
+
+    100% {
+      transform: scale(1);
+      background-color: rgba(41, 73, 255, 0.75);
+    }
+  }
+
+  @keyframes wallAnimation {
+    0% {
+      transform: scale(0.3);
       background-color: rgb(12, 53, 71);
-      outline: none;
     }
 
-    &.node-shortest-path {
-      animation-name: shortestPath;
-      animation-duration: 1.5s;
-      animation-timing-function: ease-out;
-      animation-delay: 0;
-      animation-direction: alternate;
-      animation-iteration-count: 1;
-      animation-fill-mode: forwards;
-      animation-play-state: running;
-      outline: none;
+    50% {
+      transform: scale(1.2);
+      background-color: rgb(12, 53, 71);
     }
 
-    @keyframes visitedAnimation {
-      0% {
-        transform: scale(0.3);
-        background-color: rgba(8, 14, 51, 0.75);
-        border-radius: 100%;
-      }
+    100% {
+      transform: scale(1);
+      background-color: rgb(12, 53, 71);
+    }
+  }
 
-      25% {
-        background-color: rgba(12, 21, 74, 0.75);
-      }
-
-      50% {
-        background-color: rgba(17, 30, 108, 0.75);
-      }
-
-      75% {
-        transform: scale(1.2);
-        background-color: rgba(25, 45, 161, 0.75);
-      }
-
-      100% {
-        transform: scale(1);
-        background-color: rgba(41, 73, 255, 0.75);
-      }
+  @keyframes shortestPath {
+    0% {
+      transform: scale(0.6);
+      background-color: rgb(255, 242, 28);
     }
 
-    @keyframes wallAnimation {
-      0% {
-        transform: scale(0.3);
-        background-color: rgb(12, 53, 71);
-      }
-
-      50% {
-        transform: scale(1.2);
-        background-color: rgb(12, 53, 71);
-      }
-
-      100% {
-        transform: scale(1);
-        background-color: rgb(12, 53, 71);
-      }
+    50% {
+      transform: scale(1.2);
     }
 
-    @keyframes shortestPath {
-      0% {
-        transform: scale(0.6);
-        background-color: rgb(255, 242, 28);
-      }
-
-      50% {
-        transform: scale(1.2);
-      }
-
-      100% {
-        transform: scale(1);
-        background-color: rgb(255, 221, 37);
-      }
+    100% {
+      transform: scale(1);
+      background-color: rgb(255, 221, 37);
     }
   }
 }
