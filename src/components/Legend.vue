@@ -1,31 +1,29 @@
 <template>
   <div class="legend">
-    <ul>
-      <li>
-        <div class="node node-start"></div>
-        Start node
-      </li>
-      <li>
-        <div class="node node-finish"></div>
-        Target node
-      </li>
-      <li>
-        <div class="node node-visited"></div>
-        Visited node
-      </li>
-      <li>
-        <div class="node node"></div>
-        Unvisited node
-      </li>
-      <li>
-        <div class="node node-shortest-path"></div>
-        Shortest-path node
-      </li>
-      <li>
-        <div class="node node-wall"></div>
-        Wall node
-      </li>
-    </ul>
+    <div class="legend-item">
+      <div class="node node-start"></div>
+      <div>Start node</div>
+    </div>
+    <div class="legend-item">
+      <div class="node node-finish"></div>
+      <div>Target node</div>
+    </div>
+    <div class="legend-item">
+      <div class="node node-visited"></div>
+      <div>Visited node</div>
+    </div>
+    <div class="legend-item">
+      <div class="node node"></div>
+      <div>Unvisited node</div>
+    </div>
+    <div class="legend-item">
+      <div class="node node-shortest-path"></div>
+      <div>Shortest-path node</div>
+    </div>
+    <div class="legend-item">
+      <div class="node node-wall"></div>
+      <div>Wall node</div>
+    </div>
   </div>
 </template>
 
@@ -38,6 +36,11 @@ export default class Legend extends Vue {}
 
 <style lang="scss" scoped>
 .legend {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
   max-width: 1000px;
   margin: auto;
   margin-bottom: 25px;
@@ -47,24 +50,16 @@ export default class Legend extends Vue {}
   border-radius: 4px;
   box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.06);
 
-  ul {
+  .legend-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     margin-bottom: 15px;
     padding-inline-start: 0;
 
-    li {
-      display: inline-block;
-      list-style: none;
-      padding: 0 28px 0 0;
+    div:last-child {
+      margin-left: 8px;
       font-size: 14px;
-    }
-
-    div {
-      width: 25px;
-      height: 25px;
-      display: inline-block;
-      position: relative;
-      top: 7.5px;
-      margin: 0 5px;
     }
   }
 
@@ -219,6 +214,11 @@ export default class Legend extends Vue {}
   .legend {
     margin: 0 20px 25px 20px;
     padding: 15px;
+    .legend-item {
+      div:first-child {
+        margin-left: 8px;
+      }
+    }
   }
 }
 </style>
