@@ -1,11 +1,15 @@
 <template>
   <div class="vue-select" @click="toggleDropdown">
-    <span class="selected-option">
+    <span
+      @click="activeDrop"
+      class="selected-option"
+      :class="{ active: active }"
+    >
       {{ currentPlaceholder }}
       <svg width="24" height="24" viewBox="0 0 24 24">
         <path
-          d="M11,4H13V16L18.5,10.5L19.92,11.92L12,19.84L4.08,11.92L5.5,10.5L11,16V4Z"
-        ></path>
+          d="M11.404,16.407l-6.826,-6.826c-0.329,-0.329 -0.329,-0.863 0,-1.192l0.796,-0.796c0.329,-0.329 0.861,-0.329 1.191,-0.002l5.435,5.41l5.435,-5.41c0.33,-0.327 0.862,-0.327 1.191,0.002l0.796,0.796c0.329,0.329 0.329,0.863 0,1.192l-6.826,6.826c-0.329,0.329 -0.863,0.329 -1.192,0Z"
+        />
       </svg>
     </span>
     <transition name="slide">
@@ -43,6 +47,7 @@ export default class VDropdown extends Vue {
   private currentPlaceholder: string = this.placeholder;
   private selected = "Select an option";
   private showDropdown = false;
+  private active = false;
 
   mounted() {
     this.currentPlaceholder = this.options[0];
@@ -55,6 +60,10 @@ export default class VDropdown extends Vue {
 
   public toggleDropdown(): void {
     this.showDropdown = !this.showDropdown;
+  }
+
+  public activeDrop(): void {
+    this.active = !this.active;
   }
 
   @Emit("interface")
@@ -76,7 +85,7 @@ export default class VDropdown extends Vue {
   cursor: pointer;
   user-select: none;
   box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.06);
-  border: none;
+  border-radius: 4px;
   color: rgba(41, 73, 255, 0.75);
   font-size: 14px;
   transition: all 200ms linear;
@@ -98,18 +107,18 @@ export default class VDropdown extends Vue {
     &:hover svg {
       fill: rgba(41, 73, 255, 0.4);
     }
-  }
 
-  svg {
-    fill: rgba(41, 73, 255, 0.75);
-    position: absolute;
-    right: 8px;
-    top: 50%;
-    transform: translateY(-50%);
-    transition: fill 300ms linear;
+    svg {
+      fill: rgba(41, 73, 255, 0.75);
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: fill 300ms linear, transform 300ms ease;
+    }
 
-    &:hover {
-      fill: rgba(41, 73, 255, 0.4);
+    &.active svg {
+      transform: translateY(-50%) rotateX(0.5turn);
     }
   }
 
@@ -121,6 +130,8 @@ export default class VDropdown extends Vue {
     z-index: 1;
     background: inherit;
     box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.06);
+    border-radius: 4px;
+    margin-top: 2px;
 
     .dropdown-options--cell {
       user-select: none;

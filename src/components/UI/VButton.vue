@@ -36,6 +36,7 @@ export default class VButton extends Vue {
 <style lang="scss" scoped>
 .btn {
   height: 36px;
+  border-radius: 4px;
   display: inline-block;
   font-size: 14px;
   padding: 0 16px;
@@ -52,11 +53,11 @@ export default class VButton extends Vue {
     border: 1px solid rgba(41, 73, 255, 0.75);
     margin: 10px;
 
-    &::hover {
+    &:hover {
       transition: 0.4s;
-      background: rgba(41, 73, 255, 0.75);
+      background: rgba(57, 86, 252, 0.75);
       box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.26);
-      border: 1px solid rgba(41, 73, 255, 0.75);
+      border: 1px solid rgba(57, 86, 252, 0.75);
     }
   }
 
