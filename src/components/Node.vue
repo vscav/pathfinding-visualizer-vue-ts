@@ -70,9 +70,16 @@ export default class Node extends Vue {
 
 <style lang="scss" scoped>
 .node {
-  width: 25px;
-  height: 25px;
-  outline: 1px solid rgba(41, 73, 255, 0.1);
+  border: 1px solid rgba(41, 73, 255, 0.1);
+  text-align: center;
+  flex: 1 0 auto;
+  height: auto;
+
+  &:before {
+    content: "";
+    float: left;
+    padding-top: 100%;
+  }
 
   &.node-finish {
     background-image: url(../assets/target.svg);

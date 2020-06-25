@@ -9,25 +9,27 @@
       @visualize="visualize"
     />
     <Legend />
-    <table class="board">
-      <tbody>
-        <tr v-for="(row, rowIndex) in grid" v-bind:key="rowIndex">
-          <Node
-            v-for="(node, nodeIndex) in row"
-            v-bind:key="nodeIndex"
-            :col="node.col"
-            :row="node.row"
-            :isStart="node.isStart"
-            :isFinish="node.isFinish"
-            :isWall="node.isWall"
-            @mouse-up="handleMouseUp"
-            @mouse-down="handleMouseDown"
-            @mouse-enter="handleMouseEnter"
-            @mouse-leave="handleMouseLeave"
-          />
-        </tr>
-      </tbody>
-    </table>
+    <div class="board">
+      <div
+        class="board-row"
+        v-for="(row, rowIndex) in grid"
+        v-bind:key="rowIndex"
+      >
+        <Node
+          v-for="(node, nodeIndex) in row"
+          v-bind:key="nodeIndex"
+          :col="node.col"
+          :row="node.row"
+          :isStart="node.isStart"
+          :isFinish="node.isFinish"
+          :isWall="node.isWall"
+          @mouse-up="handleMouseUp"
+          @mouse-down="handleMouseDown"
+          @mouse-enter="handleMouseEnter"
+          @mouse-leave="handleMouseLeave"
+        />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -368,10 +370,25 @@ export default class PathfindingVisualizer extends Vue {
 
 <style lang="scss" scoped>
 .board {
+  display: flex;
+  flex-direction: column;
   max-width: 1000px;
   margin: auto;
   border-spacing: 0px;
   background: #fff;
+
+  .board-row {
+    padding: 0;
+    margin: 0;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+    line-height: 30px;
+  }
 }
 
 @media (max-width: 1080px) {
