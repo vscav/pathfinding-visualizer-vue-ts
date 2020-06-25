@@ -7,8 +7,8 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import PathfindingVisualizer from "./components/PathfindingVisualizer/PathfindingVisualizer.vue";
-import Topbar from "./components/Topbar/Topbar.vue";
+import PathfindingVisualizer from "@/components/PathfindingVisualizer.vue";
+import Topbar from "@/components/Topbar.vue";
 
 @Component({
   components: {

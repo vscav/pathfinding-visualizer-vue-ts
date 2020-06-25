@@ -1,6 +1,6 @@
 <template>
   <header>
-    <img class="logo" src="../../assets/application-logo.png" alt="logo" />
+    <img class="logo" src="../assets/application-logo.png" alt="logo" />
     <VButton :rounded="true"
       ><a
         target="_blank"
@@ -8,7 +8,7 @@
         href="https://github.com/vscav/pathfinding-visualizer-vue-ts"
         ><img
           class="github-logo"
-          src="../../assets/github-icon.svg"
+          src="../assets/github-icon.svg"
           alt="github"/></a
     ></VButton>
   </header>
@@ -17,7 +17,7 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 
-import VButton from "../UI/VButton.vue";
+import VButton from "@/components/UI/VButton.vue";
 
 @Component({
   components: {

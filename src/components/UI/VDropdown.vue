@@ -35,6 +35,7 @@
 
 <script lang="ts">
 import { Emit, Prop, Vue, Component } from "vue-property-decorator";
+
 @Component
 export default class VDropdown extends Vue {
   @Prop({ required: true, type: String, default: "Item type" })

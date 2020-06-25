@@ -76,14 +76,14 @@ export default class Node extends Vue {
     outline: 1px solid rgba(41, 73, 255, 0.1);
 
     &.node-finish {
-      background-image: url(../../../assets/target.svg);
+      background-image: url(../assets/target.svg);
       background-position: center;
       background-repeat: no-repeat;
       background-size: contain;
     }
 
     &.node-start {
-      background-image: url(../../../assets/chevron.svg);
+      background-image: url(../assets/chevron.svg);
       background-position: center;
       background-repeat: no-repeat;
       background-size: contain;

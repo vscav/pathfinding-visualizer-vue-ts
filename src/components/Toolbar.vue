@@ -27,8 +27,8 @@
 <script lang="ts">
 import { Component, Emit, Vue } from "vue-property-decorator";
 
-import VButton from "../../UI/VButton.vue";
-import VDropdown from "../../UI/VDropdown.vue";
+import VButton from "@/components/UI/VButton.vue";
+import VDropdown from "@/components/UI/VDropdown.vue";
 
 @Component({
   components: {

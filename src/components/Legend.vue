@@ -75,7 +75,7 @@ export default class Legend extends Vue {}
     animation-play-state: running;
 
     &.node-finish {
-      background-image: url(../../../assets/target.svg);
+      background-image: url(../assets/target.svg);
       background-position: center;
       background-repeat: no-repeat;
       background-size: contain;
@@ -91,7 +91,7 @@ export default class Legend extends Vue {}
     }
 
     &.node-start {
-      background-image: url(../../../assets/chevron.svg);
+      background-image: url(../assets/chevron.svg);
       background-position: center;
       background-repeat: no-repeat;
       background-size: contain;

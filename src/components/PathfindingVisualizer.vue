@@ -33,15 +33,16 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+
 import { NodeObject } from "@/types/NodeObject";
 
-import About from "@/components/PathfindingVisualizer/About/About.vue";
-import Legend from "@/components/PathfindingVisualizer/Legend/Legend.vue";
-import Node from "@/components/PathfindingVisualizer/Node/Node.vue";
-import Toolbar from "@/components/PathfindingVisualizer/Toolbar/Toolbar.vue";
+import About from "@/components/About.vue";
+import Legend from "@/components/Legend.vue";
+import Node from "@/components/Node.vue";
+import Toolbar from "@/components/Toolbar.vue";
 
-import { dijkstra } from "../../algorithms/dijkstra";
-import { astar } from "../../algorithms/astar";
+import { dijkstra } from "../algorithms/dijkstra";
+import { astar } from "../algorithms/astar";
 
 @Component({
   components: {

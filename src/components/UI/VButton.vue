@@ -15,6 +15,7 @@
 
 <script lang="ts">
 import { Component, Emit, Prop, Vue } from "vue-property-decorator";
+
 @Component
 export default class VButton extends Vue {
   @Prop({ required: false, type: Boolean, default: false })
